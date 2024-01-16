@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro&display=swap");
+
+.main-container {
+  background-color: rgba(0, 0, 0, 0.83);
+}
+
+.adventfont {
+  font-family: "Advent Pro", sans-serif;
+}
