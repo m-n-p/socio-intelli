@@ -3,7 +3,7 @@ import InputField from "./InputField";
 import Chats from "./Chats";
 
 const ChatScreen = ({ activeThread }) => {
-  console.log(activeThread);
+  console.log(activeThread, "in shit");
 
   return (
     <div className="flex text-white py-6   flex-col h-full max-h-screen overflow-y-hidden space-y-4">

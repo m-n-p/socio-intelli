@@ -42,20 +42,20 @@ const ChooseRole = ({ activeThread }) => {
         <Role
           handleClick={handleClick}
           image={"/roles/investor.png"}
-          heading={"Investor"}
-          value={"Investor"}
+          heading={"Email-Writer"}
+          value={"Email-Writer"}
         />
         <Role
           handleClick={handleClick}
           image={"/roles/cxo.png"}
-          heading={"CXO"}
-          value={"Strategist"}
+          heading={"Linkedin-Twitter-Writer"}
+          value={"Linkedin-Twitter-Writer"}
         />
         <Role
           handleClick={handleClick}
           image={"/roles/researcher.png"}
-          heading={"Market Researcher"}
-          value="Researcher"
+          heading={"Blog-Article-Writer"}
+          value="Blog-Article-Writer"
         />
       </div>
     </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import ResponseCard from "./ResponseCard";
 import OptionInput from "./OptionInput";
 import Loading from "./Loading";
+import EmaiWriterInput from "./EmaiWriterInput";
 
 const Chats = ({ conversations, activeThread }) => {
   console.log(conversations, "convo", activeThread);
@@ -25,6 +26,17 @@ const Chats = ({ conversations, activeThread }) => {
           activeThread?.mind === "Strategist") && (
           <OptionInput role={activeThread?.mind} />
         )}
+
+      {activeThread?.mind === "Email-Writer" && (
+        <EmaiWriterInput mind={activeThread?.mind} />
+      )}
+      {activeThread?.mind === "Linkedin-Twitter-Writer" && (
+        <EmaiWriterInput mind={activeThread?.mind} />
+      )}
+      {activeThread?.mind === "Blog-Article-Writer" && (
+        <EmaiWriterInput mind={activeThread?.mind} />
+      )}
+
       {Object.entries(conversations)?.map(([key, convo]) => {
         return (
           <>
