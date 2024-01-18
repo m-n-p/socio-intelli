@@ -4,7 +4,12 @@ import OptionInput from "./OptionInput";
 import Loading from "./Loading";
 import EmaiWriterInput from "./EmaiWriterInput";
 
-const Chats = ({ conversations, activeThread }) => {
+const Chats = ({
+  conversations,
+  activeThread,
+  inputValues,
+  setInputValues,
+}) => {
   console.log(conversations, "convo", activeThread);
   const scrollableContainerRef = useRef(null);
 
@@ -27,15 +32,11 @@ const Chats = ({ conversations, activeThread }) => {
           <OptionInput role={activeThread?.mind} />
         )}
 
-      {activeThread?.mind === "Email-Writer" && (
-        <EmaiWriterInput mind={activeThread?.mind} />
-      )}
-      {activeThread?.mind === "Linkedin-Twitter-Writer" && (
-        <EmaiWriterInput mind={activeThread?.mind} />
-      )}
-      {activeThread?.mind === "Blog-Article-Writer" && (
-        <EmaiWriterInput mind={activeThread?.mind} />
-      )}
+      <EmaiWriterInput
+        mind={activeThread?.mind}
+        inputValues={inputValues}
+        setInputValues={setInputValues}
+      />
 
       {Object.entries(conversations)?.map(([key, convo]) => {
         return (

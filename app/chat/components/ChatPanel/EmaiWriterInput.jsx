@@ -1,4 +1,12 @@
 import React, { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const InputMain = ({ name, typevar, value, onChange }) => {
   return (
@@ -14,16 +22,9 @@ const InputMain = ({ name, typevar, value, onChange }) => {
   );
 };
 
-const EmaiWriterInput = ({ mind }) => {
+const EmaiWriterInput = ({ mind, inputValues, setInputValues }) => {
   // Single state object for all inputs
-  const [inputValues, setInputValues] = useState({
-    theme: "",
-    targetAudience: "",
-    product: "",
-    specialOffer: "",
-    emailSeqNumber: "",
-  });
-  console.log(inputValues, "input");
+
   // Function to handle input changes
   const handleInputChange = (e, fieldName) => {
     setInputValues({ ...inputValues, [fieldName]: e.target.value });
@@ -67,6 +68,23 @@ const EmaiWriterInput = ({ mind }) => {
           value={inputValues.emailSeqNumber}
           onChange={(e) => handleInputChange(e, "emailSeqNumber")}
         />
+      </div>
+      <div className="w-full flex justify-center">
+        <DropdownMenu className="border-none ">
+          <DropdownMenuTrigger className="border-none text-3xl font-medium">
+            Project
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-[10rem]">
+            {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="cursor-pointer hover:text-purple-400">
+              AFTC
+            </DropdownMenuItem>
+            <DropdownMenuItem>Billing</DropdownMenuItem>
+            <DropdownMenuItem>Team</DropdownMenuItem>
+            <DropdownMenuItem>Subscription</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );
