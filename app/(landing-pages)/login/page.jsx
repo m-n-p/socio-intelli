@@ -47,13 +47,13 @@ const Login = () => {
         <div className="loginContainer">
           <div className="logo flex items-center space-x-2">
             <h1 className="adventfont text-4xl tracking-wide text-white ">
-              Market Universe <sup>TM</sup> by
+              Genesis AI <sup>TM</sup> by
             </h1>
             <Link href={"/home"}>
               <Image
                 width={200}
                 height={200}
-                src="/MUlogo.png"
+                src="/MontaLogo.png"
                 alt="Market Unwinded Logo"
               />
             </Link>
@@ -61,7 +61,7 @@ const Login = () => {
 
           <div className="formWrapper">
             <form className="form">
-              <h1 className="title ">LogIn to Market Universe</h1>
+              <h1 className="title ">LogIn to Genesis AI</h1>
               <label className="inputLabel">Email</label>
               <input
                 type="email"

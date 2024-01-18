@@ -41,19 +41,19 @@ const ChooseRole = ({ activeThread }) => {
       <div className="flex justify-between px-12  space-x-36">
         <Role
           handleClick={handleClick}
-          image={"/roles/investor.png"}
+          image={"/engines/email.png"}
           heading={"Email-Writer"}
           value={"Email-Writer"}
         />
         <Role
           handleClick={handleClick}
-          image={"/roles/cxo.png"}
+          image={"/engines/linkedin.png"}
           heading={"Linkedin-Twitter-Writer"}
           value={"Linkedin-Twitter-Writer"}
         />
         <Role
           handleClick={handleClick}
-          image={"/roles/researcher.png"}
+          image={"/engines/blog.png"}
           heading={"Blog-Article-Writer"}
           value="Blog-Article-Writer"
         />

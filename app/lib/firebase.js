@@ -4,13 +4,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore/lite";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDvqMQ7s8yJkghW1MRunfHNynx7LGYKht4",
-  authDomain: "genesis-unwinded.firebaseapp.com",
-  projectId: "genesis-unwinded",
-  storageBucket: "genesis-unwinded.appspot.com",
-  messagingSenderId: "895198374364",
-  appId: "1:895198374364:web:b3416557444fae64ff4719",
-  measurementId: "G-BEYQ6ZMCK1",
+  apiKey: "AIzaSyCFXpZtypZ_uFe0JXTjdd5vIj3g36sTcFg",
+  authDomain: "sociointel-2cb7b.firebaseapp.com",
+  projectId: "sociointel-2cb7b",
+  storageBucket: "sociointel-2cb7b.appspot.com",
+  messagingSenderId: "872999120414",
+  appId: "1:872999120414:web:c26a8707c1b7223a6b880f",
+  measurementId: "G-0MRT04W53T",
 };
 
 const app = initializeApp(firebaseConfig);

@@ -5,8 +5,8 @@ const Footer = () => {
   return (
     <footer className="footer">
       <p>
-        2023 All Rights Reserved. Market Universe is a product for Market
-        Unwinded by Montaigne Labs
+        2023 All Rights Reserved. Genesis AI is a product for Market Unwinded by
+        Montaigne Labs
       </p>
     </footer>
   );
