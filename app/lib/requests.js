@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://api.montaignelabs.com/genesis",
+  baseURL: "https://socio.montaignelabs.com/alpha",
 });
 
 const getRequest = async (endpoint) => {
@@ -20,7 +20,7 @@ const getRequest = async (endpoint) => {
 const postRequest = async (endpoint, data) => {
   try {
     const response = await instance.post(endpoint, data);
-    return response.data;
+    return response.result;
   } catch (error) {
     console.error(`Error in POST request: ${endpoint} ${error}`);
     const axiosError = error;

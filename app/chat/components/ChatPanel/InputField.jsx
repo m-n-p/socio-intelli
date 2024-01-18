@@ -4,7 +4,7 @@ import createNewQuestion from "./actions/conversation";
 import Loader from "../Loader";
 import { addQuestionToList } from "../ConversationPanel/reducers";
 
-const InputField = ({ activeThread }) => {
+const InputField = ({ activeThread, inputValues, setInputValues }) => {
   const inputRef = useRef(null);
   const [loading, setLoading] = useState(false);
 
@@ -13,18 +13,20 @@ const InputField = ({ activeThread }) => {
   async function askQuestion(e) {
     try {
       setLoading(true);
-      dispatch(addQuestionToList({ query: inputRef.current.value }));
+      dispatch(addQuestionToList({ query: inputValues?.theme }));
       dispatch(
         createNewQuestion({
-          query: inputRef.current.value,
+          query: inputValues?.theme,
           mind: activeThread?.mind,
-          api: activeThread?.mind === "Investor" ? "query_k1" : "query_k2",
+          api: activeThread?.mind === "Email-Writer" ? "martha" : "query_k2",
+          inputValues: inputValues,
         })
       );
-      inputRef.current.value = "";
+
       setLoading(false);
     } catch (error) {
       console.log(error, "error");
+      setLoading(false);
     }
   }
 
@@ -35,7 +37,10 @@ const InputField = ({ activeThread }) => {
         research findings and strategy perspective.
       </p>
       <div className="w-full flex justify-center">
-        <button className="bg-[#1B68DC] rounded-full px-6 py-3 text-4xl">
+        <button
+          onClick={askQuestion}
+          className="bg-[#1B68DC] rounded-full px-6 py-3 text-4xl"
+        >
           {loading ? <Loader /> : " Ask Me!"}{" "}
         </button>
       </div>

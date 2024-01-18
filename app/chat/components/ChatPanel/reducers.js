@@ -5,6 +5,7 @@ import createNewQuestion from "./actions/conversation";
 const initialState = {
   threads: {},
   activeThread: null,
+  answer: null,
 };
 
 const chatPanelSlice = createSlice({
@@ -65,6 +66,7 @@ const chatPanelSlice = createSlice({
           ...newThreads.conversations[state.activeThread].thread,
           result,
         },
+        answer: action.payload.answers,
       };
       delete newThreads.conversations.newThread;
       newThreads.conversations[action.payload.conversationId] = { ...object };

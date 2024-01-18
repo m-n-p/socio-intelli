@@ -10,20 +10,23 @@ const createNewQuestion = createAsyncThunk(
       converSationPanel: { conversationId, mind },
     } = thunkAPI.getState();
     console.log("call investor");
-    console.log(conversationId, payload, "investor");
+    console.log(conversationId, payload, "investor", uuid);
     let finalConversationId = conversationId;
 
     if (!finalConversationId) {
       /**
        * create new conversation before create question if it does not exist
        */
+      console.log("investorsss");
+
       const createConversationResponse = await postRequest(
         "/create_new_conversation/",
         {
           user_id: uuid,
         }
       );
-      ``;
+      console.log("investorsss  222", createConversationResponse);
+
       if (isError(createConversationResponse)) {
         return thunkAPI.rejectWithValue({
           message: createConversationResponse.error,
@@ -36,19 +39,26 @@ const createNewQuestion = createAsyncThunk(
     }
 
     let questionResponse = "";
-    console.log(finalConversationId, uuid, payload);
-    if (payload?.api === "query_k1")
-      questionResponse = await postRequest("/query_k1/", {
+    console.log(finalConversationId, uuid, payload, "lavdeh peh bhai");
+    if (payload?.api === "martha") {
+      questionResponse = await postRequest("/martha/", {
         user_id: uuid,
         conversation_id: finalConversationId,
-        query: payload.query,
-        mind: "Investor",
+        // query: payload.query,
+        project: "aftc",
+        theme: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        offer: payload?.inputValues?.specialOffer,
+        email_seq: payload?.inputValues?.emailSeqNumber,
       });
+      console.log(questionResponse, "questionResponse");
+    }
 
     if (payload?.api === "query_kc") {
       questionResponse = await postRequest("/query_kc/", {
         user_id: uuid,
-        conversation_id: finalConversationId,
+        conversation_id: "467f8f7aecef4c07854b1b8bbd95aca3",
         query: payload.query,
         engine: payload?.engine,
         mind: payload?.mind,
@@ -82,7 +92,7 @@ const createNewQuestion = createAsyncThunk(
 
     return {
       query: payload.query,
-      answers: questionResponse.data.result,
+      answers: questionResponse,
       conversationId: finalConversationId,
       role: payload?.mind,
     };
