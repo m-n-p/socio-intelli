@@ -33,7 +33,7 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
   async function approve(e) {
     try {
       setLoading(true);
-      dispatch(addQuestionToList({ query: inputValues?.theme }));
+      // dispatch(addQuestionToList({ query: inputValues?.theme }));
       dispatch(
         createNewQuestion({
           query: inputValues?.theme,
@@ -52,7 +52,7 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
   async function reject(e) {
     try {
       setLoading(true);
-      dispatch(addQuestionToList({ query: inputValues?.theme }));
+      // dispatch(addQuestionToList({ query: inputValues?.theme }));
       dispatch(
         createNewQuestion({
           query: inputValues?.theme,

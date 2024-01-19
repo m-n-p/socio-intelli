@@ -3,7 +3,6 @@ import axios from "axios";
 const instance = axios.create({
   baseURL: "https://socio.montaignelabs.com/alpha",
 });
-
 const getRequest = async (endpoint) => {
   try {
     const response = await instance.get(endpoint);

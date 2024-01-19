@@ -4,7 +4,6 @@ import { postRequest, isError } from "../../../../lib/requests";
 const createNewQuestion = createAsyncThunk(
   "chatPanel/createNewQuestion",
   async (payload, thunkAPI) => {
-    console.log("lund");
     const {
       authentication: { uuid },
       converSationPanel: { conversationId, mind },
@@ -14,6 +13,7 @@ const createNewQuestion = createAsyncThunk(
     let finalConversationId = conversationId;
 
     if (!finalConversationId) {
+      console.log("lund");
       /**
        * create new conversation before create question if it does not exist
        */
@@ -51,6 +51,10 @@ const createNewQuestion = createAsyncThunk(
     }
 
     if (payload?.api === "retry_martha") {
+      console.log("confirm", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+      });
       questionResponse = await postRequest("/retry_martha/", {
         user_id: uuid,
         conversation_id: finalConversationId,
@@ -66,6 +70,15 @@ const createNewQuestion = createAsyncThunk(
         user_id: uuid,
         conversation_id: finalConversationId,
       });
+    }
+
+    if (payload?.api === "fetch_user_history") {
+      console.log("fetch_user_history/", uuid);
+
+      questionResponse = await postRequest("/fetch_user_history/", {
+        user_id: payload?.getInputUser,
+      });
+      console.log(questionResponse, "fetch_user_history/");
     }
 
     if (payload?.api === "query_k2") {

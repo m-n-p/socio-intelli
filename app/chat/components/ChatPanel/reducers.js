@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllThreads } from "./actions/getAllThreads";
 import createNewQuestion from "./actions/conversation";
+import { getProfileInfo } from "./actions/getProfileInfo";
 
 const initialState = {
   threads: {},
   activeThread: null,
   answer: null,
+  userInfo: {},
 };
 
 const chatPanelSlice = createSlice({
@@ -50,6 +52,10 @@ const chatPanelSlice = createSlice({
     builder.addCase(getAllThreads.fulfilled, (state, action) => {
       console.log(action.payload, "actions");
       state.threads = action.payload.threads;
+    });
+    builder.addCase(getProfileInfo.fulfilled, (state, action) => {
+      console.log(action.payload, "actions");
+      state.userInfo = action.payload.info;
     });
     builder.addCase(createNewQuestion.fulfilled, (state, action) => {
       let newThreads = { ...state.threads };

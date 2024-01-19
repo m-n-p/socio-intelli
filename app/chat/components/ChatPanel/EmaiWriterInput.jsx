@@ -55,19 +55,20 @@ const EmaiWriterInput = ({ mind, inputValues, setInputValues }) => {
       <div className="flex flex-row space-x-3 justify-center">
         {mind === "Email-Writer" && (
           <InputMain
+            name="Email Sequence Number"
+            typevar="number"
+            value={inputValues.emailSeqNumber}
+            onChange={(e) => handleInputChange(e, "emailSeqNumber")}
+          />
+        )}
+        {mind !== "Blog-Article-Writer" && (
+          <InputMain
             name="Special Offer"
             typevar="text"
             value={inputValues.specialOffer}
             onChange={(e) => handleInputChange(e, "specialOffer")}
           />
         )}
-
-        <InputMain
-          name="Email Sequence Number"
-          typevar="number"
-          value={inputValues.emailSeqNumber}
-          onChange={(e) => handleInputChange(e, "emailSeqNumber")}
-        />
       </div>
       <div className="w-full flex justify-center">
         <DropdownMenu className="border-none ">
