@@ -17,7 +17,6 @@ const createNewQuestion = createAsyncThunk(
       /**
        * create new conversation before create question if it does not exist
        */
-      console.log("investorsss");
 
       const createConversationResponse = await postRequest(
         "/create_new_conversation/",
@@ -25,7 +24,6 @@ const createNewQuestion = createAsyncThunk(
           user_id: uuid,
         }
       );
-      console.log("investorsss  222", createConversationResponse);
 
       if (isError(createConversationResponse)) {
         return thunkAPI.rejectWithValue({
@@ -33,18 +31,16 @@ const createNewQuestion = createAsyncThunk(
         });
       }
 
-      console.log(createConversationResponse);
-
       finalConversationId = createConversationResponse.data.conversation_id;
     }
 
     let questionResponse = "";
-    console.log(finalConversationId, uuid, payload, "lavdeh peh bhai");
+
     if (payload?.api === "martha") {
       questionResponse = await postRequest("/martha/", {
         user_id: uuid,
         conversation_id: finalConversationId,
-        // query: payload.query,
+        // query: "query1",
         project: "aftc",
         theme: payload?.inputValues?.theme,
         target_audience: payload?.inputValues?.targetAudience,
@@ -52,26 +48,23 @@ const createNewQuestion = createAsyncThunk(
         offer: payload?.inputValues?.specialOffer,
         email_seq: payload?.inputValues?.emailSeqNumber,
       });
-      console.log(questionResponse, "questionResponse");
     }
 
-    if (payload?.api === "query_kc") {
-      questionResponse = await postRequest("/query_kc/", {
+    if (payload?.api === "retry_martha") {
+      questionResponse = await postRequest("/retry_martha/", {
         user_id: uuid,
-        conversation_id: "467f8f7aecef4c07854b1b8bbd95aca3",
-        query: payload.query,
-        engine: payload?.engine,
-        mind: payload?.mind,
+        conversation_id: finalConversationId,
       });
     }
 
-    if (payload?.api === "query_kb") {
-      questionResponse = await postRequest("/query_kc/", {
+    if (payload?.api === "confirm_martha") {
+      console.log("confirm", {
         user_id: uuid,
         conversation_id: finalConversationId,
-        query: payload.query,
-        engine: payload?.engine,
-        mind: payload?.mind,
+      });
+      questionResponse = await postRequest("/confirm_martha/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
       });
     }
 
@@ -92,7 +85,7 @@ const createNewQuestion = createAsyncThunk(
 
     return {
       query: payload.query,
-      answers: questionResponse,
+      answers: questionResponse?.result,
       conversationId: finalConversationId,
       role: payload?.mind,
     };

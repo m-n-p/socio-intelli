@@ -20,7 +20,8 @@ const getRequest = async (endpoint) => {
 const postRequest = async (endpoint, data) => {
   try {
     const response = await instance.post(endpoint, data);
-    return response.result;
+    console.log(response, "final response");
+    return response.data;
   } catch (error) {
     console.error(`Error in POST request: ${endpoint} ${error}`);
     const axiosError = error;

@@ -9,7 +9,7 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
-
+  console.log(activeThread, "active");
   async function askQuestion(e) {
     try {
       setLoading(true);
@@ -30,6 +30,45 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
     }
   }
 
+  async function approve(e) {
+    try {
+      setLoading(true);
+      dispatch(addQuestionToList({ query: inputValues?.theme }));
+      dispatch(
+        createNewQuestion({
+          query: inputValues?.theme,
+          mind: activeThread?.mind,
+          api: "confirm_martha",
+          inputValues: inputValues,
+        })
+      );
+
+      setLoading(false);
+    } catch (error) {
+      console.log(error, "error");
+      setLoading(false);
+    }
+  }
+  async function reject(e) {
+    try {
+      setLoading(true);
+      dispatch(addQuestionToList({ query: inputValues?.theme }));
+      dispatch(
+        createNewQuestion({
+          query: inputValues?.theme,
+          mind: activeThread?.mind,
+          api: "retry_martha",
+          inputValues: inputValues,
+        })
+      );
+
+      setLoading(false);
+    } catch (error) {
+      console.log(error, "error");
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="flex flex-col items-center space-y-3 w-4/5 mx-auto ">
       <p>
@@ -37,12 +76,29 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
         research findings and strategy perspective.
       </p>
       <div className="w-full flex justify-center">
-        <button
-          onClick={askQuestion}
-          className="bg-[#1B68DC] rounded-full px-6 py-3 text-4xl"
-        >
-          {loading ? <Loader /> : " Ask Me!"}{" "}
-        </button>
+        {Object.keys(activeThread?.chats).length === 0 ? (
+          <button
+            onClick={askQuestion}
+            className="bg-[#1B68DC] rounded-full px-6 py-3 text-4xl"
+          >
+            {loading ? <Loader /> : " Ask Me!"}{" "}
+          </button>
+        ) : (
+          <div className="flex items-center flex-row space-x-6">
+            <button
+              onClick={approve}
+              className="bg-green-500 rounded-2xl  px-3 py-3 text-2xl font-medium text-white"
+            >
+              Approve
+            </button>
+            <button
+              onClick={reject}
+              className="bg-red-600 rounded-2xl px-3 py-3 text-2xl font-medium text-white"
+            >
+              Try Again
+            </button>
+          </div>
+        )}
       </div>
       {/* <div className="w-full relative ">
         <button

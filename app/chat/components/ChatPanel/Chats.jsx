@@ -10,7 +10,6 @@ const Chats = ({
   inputValues,
   setInputValues,
 }) => {
-  console.log(conversations, "convo", activeThread);
   const scrollableContainerRef = useRef(null);
 
   useEffect(() => {

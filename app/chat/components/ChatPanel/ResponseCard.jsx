@@ -7,7 +7,7 @@ const ResponseCard = ({ initial, isGenesis, text, loading }) => {
   return (
     <div
       className={
-        "w-full flex items-center " +
+        "w-full flex items-center flex-col space-y-3" +
         (isGenesis ? "bg-[#D9D9D9] bg-opacity-10 " : "bg-transparent")
       }
     >
