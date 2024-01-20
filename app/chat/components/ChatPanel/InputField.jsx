@@ -10,6 +10,30 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
 
   const dispatch = useDispatch();
   console.log(activeThread, "active");
+
+  const getQuery = () => {
+    if (activeThread?.mind === "Email-Writer") {
+      return {
+        first: "martha",
+        confirm: "confirm_martha",
+        retry: "retry_martha",
+      };
+    } else if (activeThread?.mind === "Linkedin-Twitter-Writer") {
+      return {
+        first: "sian",
+        confirm: "confirm_lntw",
+        retry: "retry_lntw",
+      };
+    } else if (activeThread?.mind === "Blog-Article-Writer") {
+      return {
+        first: "amelia",
+        confirm: "confirm_amelia",
+        retry: "retry_amelia",
+      };
+    }
+  };
+  console.log(getQuery(), "getQuery");
+
   async function askQuestion(e) {
     try {
       setLoading(true);
@@ -18,7 +42,7 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
         createNewQuestion({
           query: inputValues?.theme,
           mind: activeThread?.mind,
-          api: activeThread?.mind === "Email-Writer" ? "martha" : "query_k2",
+          api: getQuery()?.first,
           inputValues: inputValues,
         })
       );
@@ -38,7 +62,7 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
         createNewQuestion({
           query: inputValues?.theme,
           mind: activeThread?.mind,
-          api: "confirm_martha",
+          api: getQuery()?.confirm,
           inputValues: inputValues,
         })
       );
@@ -57,7 +81,7 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
         createNewQuestion({
           query: inputValues?.theme,
           mind: activeThread?.mind,
-          api: "retry_martha",
+          api: getQuery()?.retry,
           inputValues: inputValues,
         })
       );
@@ -71,15 +95,15 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
 
   return (
     <div className="flex flex-col items-center space-y-3 w-4/5 mx-auto ">
-      <p>
+      {/* <p>
         Responses are generated from the Knowledge Base, an outcome of our
         research findings and strategy perspective.
-      </p>
+      </p> */}
       <div className="w-full flex justify-center">
         {Object.keys(activeThread?.chats).length === 0 ? (
           <button
             onClick={askQuestion}
-            className="bg-[#1B68DC] rounded-full px-6 py-3 text-4xl"
+            className="bg-purple-500 rounded-full px-6 py-3 text-4xl"
           >
             {loading ? <Loader /> : " Ask Me!"}{" "}
           </button>

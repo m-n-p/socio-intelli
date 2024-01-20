@@ -40,20 +40,17 @@ const Login = () => {
 
   return (
     <div className="relative w-screen h-screen loginback">
-      <div
-        className="relative w-full h-full bg-black bg-opacity-15"
-        style={{ zIndex: 100 }}
-      >
+      <div className="relative w-full h-full " style={{ zIndex: 100 }}>
         <div className="loginContainer">
           <div className="logo flex items-center space-x-2">
-            <h1 className="adventfont text-4xl tracking-wide text-white ">
+            <h1 className="font-medium text-purple-500 text-4xl tracking-wide  ">
               Genesis AI <sup>TM</sup> by
             </h1>
             <Link href={"/home"}>
               <Image
                 width={200}
                 height={200}
-                src="/MontaLogo.png"
+                src="/MontaigneLogoBlack.png"
                 alt="Market Unwinded Logo"
               />
             </Link>
@@ -80,7 +77,11 @@ const Login = () => {
               />
 
               <div className="buttonContainer">
-                <button onClick={signIn} type="submit" className="button">
+                <button
+                  onClick={signIn}
+                  type="submit"
+                  className="button bg-purple-500"
+                >
                   Log In
                 </button>
               </div>

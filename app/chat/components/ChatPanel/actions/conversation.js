@@ -8,12 +8,11 @@ const createNewQuestion = createAsyncThunk(
       authentication: { uuid },
       converSationPanel: { conversationId, mind },
     } = thunkAPI.getState();
-    console.log("call investor");
+
     console.log(conversationId, payload, "investor", uuid);
     let finalConversationId = conversationId;
 
     if (!finalConversationId) {
-      console.log("lund");
       /**
        * create new conversation before create question if it does not exist
        */
@@ -51,10 +50,6 @@ const createNewQuestion = createAsyncThunk(
     }
 
     if (payload?.api === "retry_martha") {
-      console.log("confirm", {
-        user_id: uuid,
-        conversation_id: finalConversationId,
-      });
       questionResponse = await postRequest("/retry_martha/", {
         user_id: uuid,
         conversation_id: finalConversationId,
@@ -62,31 +57,57 @@ const createNewQuestion = createAsyncThunk(
     }
 
     if (payload?.api === "confirm_martha") {
-      console.log("confirm", {
-        user_id: uuid,
-        conversation_id: finalConversationId,
-      });
       questionResponse = await postRequest("/confirm_martha/", {
         user_id: uuid,
         conversation_id: finalConversationId,
       });
     }
 
-    if (payload?.api === "fetch_user_history") {
-      console.log("fetch_user_history/", uuid);
-
-      questionResponse = await postRequest("/fetch_user_history/", {
-        user_id: payload?.getInputUser,
-      });
-      console.log(questionResponse, "fetch_user_history/");
-    }
-
-    if (payload?.api === "query_k2") {
-      questionResponse = await postRequest("/query_k2/", {
+    if (payload?.api === "amelia") {
+      questionResponse = await postRequest("/amelia/", {
         user_id: uuid,
         conversation_id: finalConversationId,
-        query: payload.query,
-        mind: payload?.mind,
+        // query: "query1",
+        project: "aftc",
+        theme: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+      });
+    }
+    if (payload?.api === "confirm_amelia") {
+      questionResponse = await postRequest("/confirm_amelia/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+      });
+    }
+    if (payload?.api === "retry_amelia") {
+      questionResponse = await postRequest("/retry_amelia/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+      });
+    }
+    if (payload?.api === "sian") {
+      questionResponse = await postRequest("/sian/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        // query: "query1",
+        project: "aftc",
+        theme: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        offer: payload?.inputValues?.specialOffer,
+      });
+    }
+    if (payload?.api === "retry_lntw") {
+      questionResponse = await postRequest("/retry_lntw/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+      });
+    }
+    if (payload?.api === "confirm_lntw") {
+      questionResponse = await postRequest("/confirm_lntw/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
       });
     }
 

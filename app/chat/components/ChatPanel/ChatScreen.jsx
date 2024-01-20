@@ -3,7 +3,6 @@ import InputField from "./InputField";
 import Chats from "./Chats";
 
 const ChatScreen = ({ activeThread }) => {
-  console.log(activeThread, "in shit");
   const [inputValues, setInputValues] = useState({
     theme: "",
     targetAudience: "",
@@ -11,10 +10,12 @@ const ChatScreen = ({ activeThread }) => {
     specialOffer: "",
     emailSeqNumber: "",
   });
-  console.log(inputValues, "value inscreen");
+
   return (
-    <div className="flex text-white py-6   flex-col h-full max-h-screen overflow-y-hidden space-y-4">
-      <h2 className="adventfont text-2xl px-12">Hey Rohith! Good Afternoon</h2>
+    <div className="flex  py-6   flex-col h-full max-h-screen overflow-y-hidden space-y-4">
+      <h2 className="font-medium text-purple-500 text-3xl px-12 ">
+        Hey Rohith! Good Afternoon
+      </h2>
       <div className="flex items-center justify-center">
         <h3 className="underline underline-offset-2 font-semibold text-xl">
           {activeThread?.mind}

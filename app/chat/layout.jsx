@@ -16,10 +16,10 @@ const ChatLayout = () => {
 
   return (
     <div className="w-screen h-screen max-h-screen overflow-hidden flex main-container">
-      <div className="w-[20%] h-screen overflow-hidden  bg-[#222121]">
+      <div className="w-[20%] h-screen overflow-hidden  ">
         <LeftPanel />
       </div>
-      <div className="max-w-[80%] grow h-full overflow-y-hidden max-h-full ">
+      <div className="max-w-[80%] grow h-full overflow-y-hidden max-h-full bg-[#f4f4f4]">
         {activeThread.mind === "" ? (
           <ChooseRole activeThread={activeThread} />
         ) : (

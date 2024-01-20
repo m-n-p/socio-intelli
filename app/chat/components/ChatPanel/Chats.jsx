@@ -19,17 +19,17 @@ const Chats = ({
       container.scrollTop = container.scrollHeight;
     }
   }, [conversations]);
-
+  console.log(conversations, "conversations");
   return (
     <div
       ref={scrollableContainerRef}
       className="flex flex-col py-6 w-full grow max-h-full noscrollbarstyle overflow-y-scroll"
     >
-      {Object.keys(conversations).length === 0 &&
+      {/* {Object.keys(conversations).length === 0 &&
         (activeThread?.mind === "Researcher" ||
           activeThread?.mind === "Strategist") && (
           <OptionInput role={activeThread?.mind} />
-        )}
+        )} */}
 
       <EmaiWriterInput
         mind={activeThread?.mind}
@@ -44,13 +44,15 @@ const Chats = ({
               initial={"RS"}
               isGenesis={false}
               text={convo?.query}
+              mind={activeThread?.mind}
             />
             {!convo?.loading ? (
               convo?.answer && (
                 <ResponseCard
                   initial={" MU"}
                   isGenesis={true}
-                  text={`${convo?.answer}`}
+                  text={convo?.answer}
+                  mind={activeThread?.mind}
                 />
               )
             ) : (

@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.83);
+  /* background-color: rgba(0, 0, 0, 0.83); */
 }
 .logo {
   text-align: center;
@@ -31,13 +31,10 @@
   transform: translateX(-50%);
 }
 
-.formWrapper {
-}
-
 .form {
   display: flex;
   flex-direction: column;
-  background-color: #a9a9a9;
+  background-color: #f4f4f4;
   border-radius: 27px;
   width: 340px;
   height: 400px;
@@ -78,8 +75,8 @@
 .button {
   margin: 0 auto;
   border-radius: 17px;
-  background-color: #1b68dc;
-  color: white;
+  /* background-color: #1b68dc; */
+  color: black;
   font-family: "Roboto Flex-Bold", Helvetica;
   font-size: 15px;
   font-weight: 700;

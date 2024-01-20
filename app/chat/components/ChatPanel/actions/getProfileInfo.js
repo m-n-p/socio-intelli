@@ -11,6 +11,8 @@ export const getProfileInfo = createAsyncThunk(
       user_id: uuid,
     });
 
+    console.log(info);
+
     if (isError(info)) {
       return thunkAPI.rejectWithValue({
         message: info.error,

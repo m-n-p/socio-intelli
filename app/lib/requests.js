@@ -18,7 +18,9 @@ const getRequest = async (endpoint) => {
 
 const postRequest = async (endpoint, data) => {
   try {
-    const response = await instance.post(endpoint, data);
+    const response = await instance.post(endpoint, data, {
+      withCredentials: true,
+    });
     console.log(response, "final response");
     return response.data;
   } catch (error) {
