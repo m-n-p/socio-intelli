@@ -44,7 +44,7 @@ const Login = () => {
         <div className="loginContainer">
           <div className="logo flex items-center space-x-2">
             <h1 className="font-medium text-purple-500 text-4xl tracking-wide  ">
-              Genesis AI <sup>TM</sup> by
+              Socio Intelli <sup>TM</sup> by
             </h1>
             <Link href={"/home"}>
               <Image
@@ -58,7 +58,7 @@ const Login = () => {
 
           <div className="formWrapper">
             <form className="form">
-              <h1 className="title ">LogIn to Genesis AI</h1>
+              <h1 className="title ">LogIn to Socio Intelli</h1>
               <label className="inputLabel">Email</label>
               <input
                 type="email"
