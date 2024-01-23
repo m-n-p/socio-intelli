@@ -6,6 +6,7 @@ import ChooseRole from "./components/ChatPanel/ChooseRole";
 import ChatScreen from "./components/ChatPanel/ChatScreen";
 import { useAuthStateChange } from "../hooks/useAuthStateChange";
 import { useAppSelector } from "../store";
+import { Toaster } from "react-hot-toast";
 
 const ChatLayout = () => {
   useAuthStateChange();
@@ -16,6 +17,7 @@ const ChatLayout = () => {
 
   return (
     <div className="w-screen h-screen max-h-screen overflow-hidden flex main-container">
+      <Toaster />
       <div className="w-[20%] h-screen overflow-hidden  ">
         <LeftPanel />
       </div>

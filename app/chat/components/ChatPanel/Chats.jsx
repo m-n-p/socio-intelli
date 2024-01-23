@@ -31,12 +31,6 @@ const Chats = ({
           <OptionInput role={activeThread?.mind} />
         )} */}
 
-      <EmaiWriterInput
-        mind={activeThread?.mind}
-        inputValues={inputValues}
-        setInputValues={setInputValues}
-      />
-
       {Object.entries(conversations)?.map(([key, convo]) => {
         return (
           <>
@@ -61,6 +55,11 @@ const Chats = ({
           </>
         );
       })}
+      <EmaiWriterInput
+        mind={activeThread?.mind}
+        inputValues={inputValues}
+        setInputValues={setInputValues}
+      />
     </div>
   );
 };

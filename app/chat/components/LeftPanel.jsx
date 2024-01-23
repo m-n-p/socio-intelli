@@ -26,7 +26,7 @@ const LeftPanel = () => {
           <QuestionsList />
         </div>
       </div>
-      <button className="flex h-max items-center bg-[#f4f4f4]">
+      <button className="flex h-max items-center bg-white">
         <Image
           src="/MontaLogo.png"
           alt="Avatar"

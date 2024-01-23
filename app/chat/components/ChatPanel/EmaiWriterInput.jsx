@@ -16,7 +16,7 @@ const InputMain = ({ name, typevar, value, onChange }) => {
         type={typevar}
         value={value}
         onChange={onChange}
-        className="text-black text-2xl py-3 px-3 rounded-full "
+        className="text-black text-xl font-medium border border-purple-500 py-3 px-3 rounded-full "
       />
     </div>
   );
@@ -72,8 +72,8 @@ const EmaiWriterInput = ({ mind, inputValues, setInputValues }) => {
       </div>
       <div className="w-full flex justify-center">
         <DropdownMenu className="border-none ">
-          <DropdownMenuTrigger className="border-none text-xl font-medium">
-            Click here To Selct Project
+          <DropdownMenuTrigger className="border-black border-2 px-4 py-3 rounded-full text-xl font-medium  hover:bg-purple-400 hover:text-white hover:border-white">
+            Click here To Select Project
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-[10rem]">
             {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}

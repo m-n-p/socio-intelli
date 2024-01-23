@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { postRequest, isError } from "../../../../lib/requests";
+import toast from "react-hot-toast";
 
 const createNewQuestion = createAsyncThunk(
   "chatPanel/createNewQuestion",
@@ -87,6 +88,7 @@ const createNewQuestion = createAsyncThunk(
       });
     }
     if (payload?.api === "sian") {
+      console.log("sian ");
       questionResponse = await postRequest("/sian/", {
         user_id: uuid,
         conversation_id: finalConversationId,
@@ -116,13 +118,17 @@ const createNewQuestion = createAsyncThunk(
         message: questionResponse.error,
       });
     }
-
-    return {
-      query: payload.query,
-      answers: questionResponse?.result,
-      conversationId: finalConversationId,
-      role: payload?.mind,
-    };
+    console.log(questionResponse, "questionResponse");
+    if (questionResponse?.message) {
+      toast.success(questionResponse?.message);
+    } else {
+      return {
+        query: payload.query,
+        answers: questionResponse?.result,
+        conversationId: finalConversationId,
+        role: payload?.mind,
+      };
+    }
   }
 );
 

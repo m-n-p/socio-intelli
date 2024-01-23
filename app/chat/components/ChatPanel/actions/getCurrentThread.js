@@ -7,23 +7,15 @@ const getGetCurrentThread = createAsyncThunk(
       chatPanel: { threads },
     } = thunkAPI.getState();
     let convoId = payload?.conversationId;
-
-    let returnThreads = threads.conversations[convoId];
-
-    if (threads?.length > 0) {
-      returnThreads = threads.conversations[convoId];
-    }
-
-    console.log(
-      threads,
-      "redux threads",
-      convoId,
-      threads.conversations[convoId]
+    console.log(threads, "threads");
+    let returnThreads = threads.filter(
+      (obj) => obj?.conversation_id === convoId
     );
+    console.log(returnThreads, "returnThreads");
 
     return {
-      threads: returnThreads.thread,
-      mind: returnThreads.mind,
+      threads: returnThreads?.length > 0 ? returnThreads[0]?.thread : [],
+      mind: returnThreads?.length > 0 ? returnThreads[0]?.mind : "",
       conversationId:
         payload?.conversationId !== "newThread" ? payload?.conversationId : "",
     };

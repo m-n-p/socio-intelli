@@ -11,10 +11,22 @@ const ChatScreen = ({ activeThread }) => {
     emailSeqNumber: "",
   });
 
+  function getTimeGreeting() {
+    const currentHour = new Date().getHours();
+
+    if (currentHour < 12) {
+      return "Good Morning";
+    } else if (currentHour < 17) {
+      return "Good Afternoon";
+    } else {
+      return "Good Evening";
+    }
+  }
+
   return (
     <div className="flex  py-6   flex-col h-full max-h-screen overflow-y-hidden space-y-4">
       <h2 className="font-medium text-purple-500 text-3xl px-12 ">
-        Hey Rohith! Good Afternoon
+        Hey There! {getTimeGreeting()}
       </h2>
       <div className="flex items-center justify-center">
         <h3 className="underline underline-offset-2 font-semibold text-xl">

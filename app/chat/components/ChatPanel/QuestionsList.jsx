@@ -41,7 +41,7 @@ const QuestionsList = () => {
                 key={index}
                 onClick={() => handleThreadClick(convo.conversation_id)}
                 className={
-                  "w-full flex py-2 px-1 rounded-md cursor-pointer hover:bg-gray-800 text-black items-center space-x-2 " +
+                  "w-full flex py-2 px-1 rounded-md cursor-pointer hover:bg-purple-400 hover:text-white text-black items-center space-x-2 " +
                   (activeThread === convo.conversation_id && "bg-orange-400")
                 }
               >
