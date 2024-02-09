@@ -85,7 +85,9 @@ const EmaiWriterInput = ({ activeThread, inputValues, setInputValues }) => {
       <div className="w-full flex justify-center">
         <DropdownMenu className="border-none ">
           <DropdownMenuTrigger className="border-black border-2 px-4 py-3 rounded-full text-xl font-medium  hover:bg-purple-400 hover:text-white hover:border-white">
-            Click here To Select Project
+            {inputValues?.project === "agmv"
+              ? "      Click Again To Select Product"
+              : "Click here To Select Project"}
           </DropdownMenuTrigger>
           {inputValues?.project === "agmv" ? (
             <DropdownMenuContent className="w-[10rem]">

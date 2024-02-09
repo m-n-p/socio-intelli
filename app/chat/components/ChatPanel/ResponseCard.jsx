@@ -3,8 +3,15 @@ import createNewQuestion from "./actions/conversation";
 import { useDispatch } from "react-redux";
 import Loader from "../Loader";
 
-const ResponseCard = ({ initial, isGenesis, text, mind, inputValues }) => {
-  console.log(text, "text in beach");
+const ResponseCard = ({
+  initial,
+  isGenesis,
+  text,
+  mind,
+  inputValues,
+  activeThread,
+}) => {
+  console.log(mind, "mind");
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -31,7 +38,7 @@ const ResponseCard = ({ initial, isGenesis, text, mind, inputValues }) => {
       };
     }
   };
-  console.log(getQuery(), "getQuery");
+  console.log(text?.result, "text?.result");
   let editedText = "";
   let editedText2 = "";
   if (typeof text === "string") {

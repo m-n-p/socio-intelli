@@ -19,7 +19,7 @@ const Chats = ({
       container.scrollTop = container.scrollHeight;
     }
   }, [conversations]);
-  console.log(conversations, "conversations");
+  console.log(activeThread, "activeThread");
   return (
     <div
       ref={scrollableContainerRef}
@@ -37,8 +37,13 @@ const Chats = ({
             <ResponseCard
               initial={"RS"}
               isGenesis={false}
-              text={convo?.query}
+              text={
+                activeThread?.chats?.length > 0
+                  ? activeThread?.chats[0]?.objective
+                  : convo?.query
+              }
               mind={activeThread?.mind}
+              activeThread={activeThread}
             />
             {!convo?.loading ? (
               convo?.answer && (
