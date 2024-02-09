@@ -165,7 +165,7 @@ const ResponseCard = ({ initial, isGenesis, text, mind, inputValues }) => {
               {isGenesis &&
                 (!loading ? (
                   <div className="flex items-center py-6 flex-row space-x-6">
-                    <button
+                    {/* <button
                       onClick={approve}
                       className="bg-green-500 rounded-full hover:text-purple-500 hover:shadow-lg  px-3 py-3 text-2xl font-medium text-white"
                     >
@@ -176,7 +176,7 @@ const ResponseCard = ({ initial, isGenesis, text, mind, inputValues }) => {
                       className="bg-red-600 rounded-full hover:text-purple-500 hover:shadow-lg px-3 py-3 text-2xl font-medium text-white"
                     >
                       Try Again
-                    </button>
+                    </button> */}
                   </div>
                 ) : (
                   <Loader size={100} />
@@ -192,7 +192,7 @@ const ResponseCard = ({ initial, isGenesis, text, mind, inputValues }) => {
               {isGenesis &&
                 (!loading ? (
                   <div className="flex items-center py-6 flex-row space-x-6">
-                    <button
+                    {/* <button
                       onClick={approve}
                       className="bg-green-500 rounded-full hover:text-purple-500 hover:shadow-lg  px-3 py-3 text-2xl font-medium text-white"
                     >
@@ -203,7 +203,7 @@ const ResponseCard = ({ initial, isGenesis, text, mind, inputValues }) => {
                       className="bg-red-600 rounded-full hover:text-purple-500 hover:shadow-lg px-3 py-3 text-2xl font-medium text-white"
                     >
                       Try Again
-                    </button>
+                    </button> */}
                   </div>
                 ) : (
                   <Loader size={100} />

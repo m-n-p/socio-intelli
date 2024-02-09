@@ -19,9 +19,9 @@ const QuestionsList = () => {
     let checkMindColor = mind.toLowerCase();
     console.log(checkMindColor);
     switch (checkMindColor) {
-      case "email-writer":
+      case "etx":
         return "#E90E0E";
-      case "strategist":
+      case "agmv":
         return "#DCB21B";
       case "researcher":
         return "#1B68DC";
@@ -47,10 +47,12 @@ const QuestionsList = () => {
               >
                 <div
                   className="py-0.5 px-3 w-16 text-center rounded-full"
-                  style={{ background: determineColor(convo.thread[0]?.theme) }}
+                  style={{
+                    background: determineColor(convo.thread[0]?.project),
+                  }}
                 >
-                  {convo.thread[0].theme
-                    ? convo.thread[0].theme.slice(0, 3).toUpperCase()
+                  {convo.thread[0].project
+                    ? convo.thread[0].project.slice(0, 3).toUpperCase()
                     : "NEW"}
                 </div>
                 <p className="grow max-w-full truncate">

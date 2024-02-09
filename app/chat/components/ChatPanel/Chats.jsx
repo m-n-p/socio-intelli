@@ -57,7 +57,7 @@ const Chats = ({
         );
       })}
       <EmaiWriterInput
-        mind={activeThread?.mind}
+        activeThread={activeThread}
         inputValues={inputValues}
         setInputValues={setInputValues}
       />

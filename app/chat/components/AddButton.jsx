@@ -7,6 +7,7 @@ const AddButton = () => {
 
   function handleClick() {
     dispatch(createNewThread());
+    window.location.reload(false);
   }
 
   return (

@@ -22,7 +22,7 @@ const InputMain = ({ name, typevar, value, onChange }) => {
   );
 };
 
-const EmaiWriterInput = ({ mind, inputValues, setInputValues }) => {
+const EmaiWriterInput = ({ activeThread, inputValues, setInputValues }) => {
   // Single state object for all inputs
 
   // Function to handle input changes
@@ -40,13 +40,21 @@ const EmaiWriterInput = ({ mind, inputValues, setInputValues }) => {
         <InputMain
           name="Objective"
           typevar="text"
-          value={inputValues.theme}
+          value={
+            activeThread?.chats?.length > 0
+              ? activeThread?.chats[0]?.objective
+              : inputValues.theme
+          }
           onChange={(e) => handleInputChange(e, "theme")}
         />
         <InputMain
           name="Target Audience:"
           typevar="text"
-          value={inputValues.targetAudience}
+          value={
+            activeThread?.chats?.length > 0
+              ? activeThread?.chats[0]?.target_audience
+              : inputValues.targetAudience
+          }
           onChange={(e) => handleInputChange(e, "targetAudience")}
         />
         {/* <InputMain
