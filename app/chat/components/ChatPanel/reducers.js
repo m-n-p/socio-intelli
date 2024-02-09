@@ -54,7 +54,7 @@ const chatPanelSlice = createSlice({
     });
     builder.addCase(getProfileInfo.fulfilled, (state, action) => {
       console.log(action.payload, "actions");
-      state.threads = action.payload.info.userHistory;
+      state.threads = action.payload.info.user_info.conversations;
       state.userInfo = action.payload.info;
     });
     builder.addCase(createNewQuestion.fulfilled, (state, action) => {

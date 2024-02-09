@@ -9,8 +9,10 @@ const ChatScreen = ({ activeThread }) => {
     product: "",
     specialOffer: "",
     emailSeqNumber: "",
+    project: "",
+    product: "",
   });
-
+  console.log(inputValues, "inputValues");
   function getTimeGreeting() {
     const currentHour = new Date().getHours();
 

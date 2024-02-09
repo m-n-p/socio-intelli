@@ -47,6 +47,7 @@ const Chats = ({
                   isGenesis={true}
                   text={convo?.answer}
                   mind={activeThread?.mind}
+                  inputValues={inputValues}
                 />
               )
             ) : (

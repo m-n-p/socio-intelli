@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { postRequest, isError } from "../../../../lib/requests";
+import toast from "react-hot-toast";
 export const getProfileInfo = createAsyncThunk(
   "chatPanel/getProfileInfo",
   async (payload, thunkAPI) => {
@@ -7,20 +8,23 @@ export const getProfileInfo = createAsyncThunk(
       authentication: { uuid },
     } = thunkAPI.getState();
 
-    const info = await await postRequest("/fetch_user_history/", {
+    const info = await postRequest("/user_convo/", {
       user_id: uuid,
     });
 
-    console.log(info);
+    console.log(info, "info");
 
     if (isError(info)) {
+      console.log(info?.error, " shit");
+      await toast.error(info?.error + "in fetch_user_history");
+
       return thunkAPI.rejectWithValue({
         message: info.error,
       });
     }
 
     return {
-      info: info.result,
+      info: info.data,
     };
   }
 );

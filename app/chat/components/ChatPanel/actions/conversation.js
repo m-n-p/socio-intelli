@@ -18,12 +18,9 @@ const createNewQuestion = createAsyncThunk(
        * create new conversation before create question if it does not exist
        */
 
-      const createConversationResponse = await postRequest(
-        "/create_new_conversation/",
-        {
-          user_id: uuid,
-        }
-      );
+      const createConversationResponse = await postRequest("/new_convo/", {
+        user_id: uuid,
+      });
 
       if (isError(createConversationResponse)) {
         return thunkAPI.rejectWithValue({
@@ -37,16 +34,16 @@ const createNewQuestion = createAsyncThunk(
     let questionResponse = "";
 
     if (payload?.api === "martha") {
-      questionResponse = await postRequest("/martha/", {
+      questionResponse = await postRequest("/martha4p/", {
         user_id: uuid,
         conversation_id: finalConversationId,
         // query: "query1",
-        project: "aftc",
-        theme: payload?.inputValues?.theme,
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
         target_audience: payload?.inputValues?.targetAudience,
         product: payload?.inputValues?.product,
-        offer: payload?.inputValues?.specialOffer,
-        email_seq: payload?.inputValues?.emailSeqNumber,
+        // offer: payload?.inputValues?.specialOffer,
+        // email_seq: payload?.inputValues?.emailSeqNumber,
       });
     }
 
@@ -58,9 +55,14 @@ const createNewQuestion = createAsyncThunk(
     }
 
     if (payload?.api === "confirm_martha") {
-      questionResponse = await postRequest("/confirm_martha/", {
+      questionResponse = await postRequest("/confirm_martha4p/", {
         user_id: uuid,
         conversation_id: finalConversationId,
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        output: payload?.output,
       });
     }
 
@@ -108,6 +110,18 @@ const createNewQuestion = createAsyncThunk(
     }
     if (payload?.api === "confirm_lntw") {
       questionResponse = await postRequest("/confirm_lntw/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+      });
+    }
+    if (payload?.api === "retry_fbin") {
+      questionResponse = await postRequest("/retry_fbin/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+      });
+    }
+    if (payload?.api === "confirm_fbin") {
+      questionResponse = await postRequest("/confirm_fbin/", {
         user_id: uuid,
         conversation_id: finalConversationId,
       });

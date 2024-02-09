@@ -64,7 +64,7 @@ const Page = () => {
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                     <th scope="col" class="px-6 py-3">
-                      Conversation_Id
+                      Engine
                     </th>
                     <th scope="col" class="px-6 py-3">
                       Cost
@@ -88,7 +88,7 @@ const Page = () => {
                           scope="row"
                           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                         >
-                          {his?.conversation_id}
+                          {his?.engine}
                         </th>
                         <td class="px-6 py-4">{his?.cost}</td>
                         <td class="px-6 py-4">{his?.thread?.[0]?.timestamp}</td>

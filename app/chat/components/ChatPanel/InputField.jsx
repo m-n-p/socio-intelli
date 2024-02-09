@@ -100,51 +100,34 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
         research findings and strategy perspective.
       </p> */}
       <div className="w-full flex justify-center">
-        {Object.keys(activeThread?.chats).length === 0 ? (
-          <div
-            onClick={askQuestion}
-            class="relative cursor-pointer inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-purple-500  border-2 border-purple-500 rounded-full hover:text-white group hover:bg-gray-50"
-          >
-            <span class="absolute left-0 block w-full h-0 transition-all bg-purple-500  opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-            <span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                ></path>
-              </svg>
-            </span>
-            <span class="relative">Ask Me</span>
-          </div>
-        ) : loading ? (
-          <div className="flex items-center ">
+        {Object.keys(activeThread?.chats).length === 0 &&
+          (loading ? (
             <Loader size={100} />
-          </div>
-        ) : (
-          <div className="flex items-center flex-row space-x-6">
-            {console.log(loading, "loading")}
-            <button
-              onClick={approve}
-              className="bg-green-500 rounded-2xl  px-3 py-3 text-2xl font-medium text-white"
+          ) : (
+            <div
+              onClick={askQuestion}
+              class="relative cursor-pointer inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-purple-500  border-2 border-purple-500 rounded-full hover:text-white group hover:bg-gray-50"
             >
-              Approve
-            </button>
-            <button
-              onClick={reject}
-              className="bg-red-600 rounded-2xl px-3 py-3 text-2xl font-medium text-white"
-            >
-              Try Again
-            </button>
-          </div>
-        )}
+              <span class="absolute left-0 block w-full h-0 transition-all bg-purple-500  opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+              <span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
+                </svg>
+              </span>
+              <span class="relative">Ask Me</span>
+            </div>
+          ))}
       </div>
       {/* <div className="w-full relative ">
         <button

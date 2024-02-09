@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://socio.montaignelabs.com/alpha",
+  baseURL: " https://mnpai.montaignelabs.com/mnpai",
 });
 const getRequest = async (endpoint) => {
   try {

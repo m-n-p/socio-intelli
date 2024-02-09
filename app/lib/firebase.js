@@ -4,13 +4,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore/lite";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCFXpZtypZ_uFe0JXTjdd5vIj3g36sTcFg",
-  authDomain: "sociointel-2cb7b.firebaseapp.com",
-  projectId: "sociointel-2cb7b",
-  storageBucket: "sociointel-2cb7b.appspot.com",
-  messagingSenderId: "872999120414",
-  appId: "1:872999120414:web:c26a8707c1b7223a6b880f",
-  measurementId: "G-0MRT04W53T",
+  apiKey: "AIzaSyBEix3bdfAjD5Fn5jTvQbZRfwp8EZCzfew",
+  authDomain: "mnpai-d9a71.firebaseapp.com",
+  projectId: "mnpai-d9a71",
+  storageBucket: "mnpai-d9a71.appspot.com",
+  messagingSenderId: "364267239929",
+  appId: "1:364267239929:web:1d107dd2e54cd1c1b72528",
+  measurementId: "G-BWH34ZWET8",
 };
 
 const app = initializeApp(firebaseConfig);
