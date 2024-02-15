@@ -162,7 +162,7 @@ const ResponseCard = ({
           </div>
         ) : (
           <div className="w-full flex flex-row space-x-3 items-center py-2">
-            <div className="w-1/2">
+            <div className="w-full">
               <p
                 className="max-w-full text-wrap	 flex items-center"
                 dangerouslySetInnerHTML={{
@@ -189,7 +189,7 @@ const ResponseCard = ({
                   <Loader size={100} />
                 ))}
             </div>
-            <div className="w-1/2">
+            {/* <div className="w-1/2">
               <p
                 className="max-w-full text-wrap	 flex items-center"
                 dangerouslySetInnerHTML={{
@@ -199,7 +199,7 @@ const ResponseCard = ({
               {isGenesis &&
                 (!loading ? (
                   <div className="flex items-center py-6 flex-row space-x-6">
-                    {/* <button
+                    <button
                       onClick={approve}
                       className="bg-green-500 rounded-full hover:text-purple-500 hover:shadow-lg  px-3 py-3 text-2xl font-medium text-white"
                     >
@@ -210,12 +210,12 @@ const ResponseCard = ({
                       className="bg-red-600 rounded-full hover:text-purple-500 hover:shadow-lg px-3 py-3 text-2xl font-medium text-white"
                     >
                       Try Again
-                    </button> */}
+                    </button>
                   </div>
                 ) : (
                   <Loader size={100} />
                 ))}
-            </div>
+            </div> */}
 
             {/* <p className="max-w-full text-wrap	 flex items-center ">{text}</p> */}
           </div>

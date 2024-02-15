@@ -11,6 +11,8 @@ const ChatScreen = ({ activeThread }) => {
     emailSeqNumber: "",
     project: "",
     product: "",
+    earlier_email: "",
+    industry: "",
   });
   console.log(inputValues, "inputValues");
   function getTimeGreeting() {

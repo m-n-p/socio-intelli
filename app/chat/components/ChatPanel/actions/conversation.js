@@ -34,7 +34,7 @@ const createNewQuestion = createAsyncThunk(
     let questionResponse = "";
 
     if (payload?.api === "martha") {
-      questionResponse = await postRequest("/martha4p/", {
+      questionResponse = await postRequest("/martha_ai/", {
         user_id: uuid,
         conversation_id: finalConversationId,
         // query: "query1",
@@ -42,6 +42,9 @@ const createNewQuestion = createAsyncThunk(
         objective: payload?.inputValues?.theme,
         target_audience: payload?.inputValues?.targetAudience,
         product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+
         // offer: payload?.inputValues?.specialOffer,
         // email_seq: payload?.inputValues?.emailSeqNumber,
       });
@@ -55,7 +58,7 @@ const createNewQuestion = createAsyncThunk(
     }
 
     if (payload?.api === "confirm_martha") {
-      questionResponse = await postRequest("/confirm_martha4p/", {
+      questionResponse = await postRequest("/confirm_martha_ai/", {
         user_id: uuid,
         conversation_id: finalConversationId,
         project: payload?.inputValues?.project,
@@ -63,6 +66,8 @@ const createNewQuestion = createAsyncThunk(
         target_audience: payload?.inputValues?.targetAudience,
         product: payload?.inputValues?.product,
         output: payload?.output,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
       });
     }
 
