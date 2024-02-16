@@ -9,6 +9,8 @@ const Chats = ({
   activeThread,
   inputValues,
   setInputValues,
+  followup,
+  setFollowup,
 }) => {
   const scrollableContainerRef = useRef(null);
 
@@ -35,6 +37,7 @@ const Chats = ({
         return (
           <>
             <ResponseCard
+              followup={followup}
               initial={"RS"}
               isGenesis={false}
               text={
@@ -48,6 +51,7 @@ const Chats = ({
             {!convo?.loading ? (
               convo?.answer && (
                 <ResponseCard
+                  followup={followup}
                   initial={" MU"}
                   isGenesis={true}
                   text={convo?.answer}
@@ -62,6 +66,8 @@ const Chats = ({
         );
       })}
       <EmaiWriterInput
+        setFollowup={setFollowup}
+        followup={followup}
         activeThread={activeThread}
         inputValues={inputValues}
         setInputValues={setInputValues}

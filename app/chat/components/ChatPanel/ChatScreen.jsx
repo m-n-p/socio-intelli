@@ -14,6 +14,7 @@ const ChatScreen = ({ activeThread }) => {
     earlier_email: "",
     industry: "",
   });
+  const [followup, setFollowup] = useState(false);
   console.log(inputValues, "inputValues");
   function getTimeGreeting() {
     const currentHour = new Date().getHours();
@@ -39,6 +40,8 @@ const ChatScreen = ({ activeThread }) => {
       </div>
       <div className="grow flex flex-col overflow-y-hidden max-h-full h-full">
         <Chats
+          setFollowup={setFollowup}
+          followup={followup}
           inputValues={inputValues}
           setInputValues={setInputValues}
           conversations={activeThread?.chats}
@@ -46,6 +49,7 @@ const ChatScreen = ({ activeThread }) => {
         />
       </div>
       <InputField
+        followup={followup}
         activeThread={activeThread}
         inputValues={inputValues}
         setInputValues={setInputValues}

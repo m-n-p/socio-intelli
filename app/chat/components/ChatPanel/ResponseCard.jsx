@@ -10,27 +10,34 @@ const ResponseCard = ({
   mind,
   inputValues,
   activeThread,
+  followup,
 }) => {
   console.log(mind, "mind");
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const getQuery = () => {
-    if (mind === "Email-Writer") {
-      return {
-        first: "martha",
-        confirm: "confirm_martha",
-        retry: "retry_martha",
-      };
-    } else if (mind === "Linkedin-Twitter-Writer") {
+    if (activeThread?.mind === "Email-Writer") {
+      if (followup) {
+        return {
+          first: "martha_ai",
+          confirm: "confirm_martha_ai",
+          retry: "retry_martha",
+        };
+      } else {
+        return {
+          first: "martha4p",
+          confirm: "confirm_martha4p",
+          retry: "retry_martha",
+        };
+      }
+    } else if (activeThread?.mind === "Linkedin-Twitter-Writer") {
       return {
         first: "sian",
         confirm: "confirm_lntw",
         retry: "retry_lntw",
-        retry_fbin: "retry_fbin",
-        confirm_fbin: "confirm_fbin",
       };
-    } else if (mind === "Blog-Article-Writer") {
+    } else if (activeThread?.mind === "Blog-Article-Writer") {
       return {
         first: "amelia",
         confirm: "confirm_amelia",
@@ -65,14 +72,15 @@ const ResponseCard = ({
           })
         );
       } else {
-        await dispatch(
-          createNewQuestion({
-            mind: getQuery()?.first,
-            api: getQuery()?.confirm,
-            inputValues: inputValues,
-            output: text?.result,
-          })
-        );
+        console.log(getQuery(), "getquery",activeThread?.mind);
+        // await dispatch(
+        //   createNewQuestion({
+        //     mind: getQuery()?.first,
+        //     api: getQuery()?.confirm,
+        //     inputValues: inputValues,
+        //     output: text?.result,
+        //   })
+        // );
       }
 
       setLoading(false);

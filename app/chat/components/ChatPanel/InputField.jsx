@@ -4,7 +4,7 @@ import createNewQuestion from "./actions/conversation";
 import Loader from "../Loader";
 import { addQuestionToList } from "../ConversationPanel/reducers";
 
-const InputField = ({ activeThread, inputValues, setInputValues }) => {
+const InputField = ({ activeThread, inputValues, followup }) => {
   const inputRef = useRef(null);
   const [loading, setLoading] = useState(false);
 
@@ -13,11 +13,19 @@ const InputField = ({ activeThread, inputValues, setInputValues }) => {
 
   const getQuery = () => {
     if (activeThread?.mind === "Email-Writer") {
-      return {
-        first: "martha",
-        confirm: "confirm_martha",
-        retry: "retry_martha",
-      };
+      if (followup) {
+        return {
+          first: "martha_ai",
+          confirm: "confirm_martha_ai",
+          retry: "retry_martha",
+        };
+      } else {
+        return {
+          first: "martha4p",
+          confirm: "confirm_martha4p",
+          retry: "retry_martha",
+        };
+      }
     } else if (activeThread?.mind === "Linkedin-Twitter-Writer") {
       return {
         first: "sian",

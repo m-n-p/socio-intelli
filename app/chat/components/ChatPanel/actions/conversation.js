@@ -33,8 +33,24 @@ const createNewQuestion = createAsyncThunk(
 
     let questionResponse = "";
 
-    if (payload?.api === "martha") {
+    if (payload?.api === "martha_ai") {
       questionResponse = await postRequest("/martha_ai/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        // query: "query1",
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+
+        // offer: payload?.inputValues?.specialOffer,
+        // email_seq: payload?.inputValues?.emailSeqNumber,
+      });
+    }
+    if (payload?.api === "martha4p") {
+      questionResponse = await postRequest("/martha4p/", {
         user_id: uuid,
         conversation_id: finalConversationId,
         // query: "query1",
@@ -57,8 +73,22 @@ const createNewQuestion = createAsyncThunk(
       });
     }
 
-    if (payload?.api === "confirm_martha") {
+    if (payload?.api === "confirm_martha_ai") {
       questionResponse = await postRequest("/confirm_martha_ai/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        output: payload?.output,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+      });
+    }
+    if (payload?.api === "confirm_martha4p") {
+      console.log(payload, "chut");
+      questionResponse = await postRequest("/confirm_martha4p/", {
         user_id: uuid,
         conversation_id: finalConversationId,
         project: payload?.inputValues?.project,
