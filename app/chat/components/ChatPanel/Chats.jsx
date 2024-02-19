@@ -11,6 +11,8 @@ const Chats = ({
   setInputValues,
   followup,
   setFollowup,
+  siantoggle,
+  setSiantoggle,
 }) => {
   const scrollableContainerRef = useRef(null);
 
@@ -66,6 +68,8 @@ const Chats = ({
         );
       })}
       <EmaiWriterInput
+        siantoggle={siantoggle}
+        setSiantoggle={setSiantoggle}
         setFollowup={setFollowup}
         followup={followup}
         activeThread={activeThread}

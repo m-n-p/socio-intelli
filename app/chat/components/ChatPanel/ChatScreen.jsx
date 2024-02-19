@@ -15,7 +15,9 @@ const ChatScreen = ({ activeThread }) => {
     industry: "",
   });
   const [followup, setFollowup] = useState(false);
-  console.log(inputValues, "inputValues");
+  const [siantoggle, setSiantoggle] = useState("instagram");
+
+  console.log(siantoggle, "siantoggle");
   function getTimeGreeting() {
     const currentHour = new Date().getHours();
 
@@ -40,6 +42,8 @@ const ChatScreen = ({ activeThread }) => {
       </div>
       <div className="grow flex flex-col overflow-y-hidden max-h-full h-full">
         <Chats
+          siantoggle={siantoggle}
+          setSiantoggle={setSiantoggle}
           setFollowup={setFollowup}
           followup={followup}
           inputValues={inputValues}
@@ -49,6 +53,8 @@ const ChatScreen = ({ activeThread }) => {
         />
       </div>
       <InputField
+        setSiantoggle={setSiantoggle}
+        siantoggle={siantoggle}
         followup={followup}
         activeThread={activeThread}
         inputValues={inputValues}

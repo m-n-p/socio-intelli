@@ -4,12 +4,17 @@ import createNewQuestion from "./actions/conversation";
 import Loader from "../Loader";
 import { addQuestionToList } from "../ConversationPanel/reducers";
 
-const InputField = ({ activeThread, inputValues, followup }) => {
+const InputField = ({
+  activeThread,
+  inputValues,
+  followup,
+  siantoggle,
+  setSiantoggle,
+}) => {
   const inputRef = useRef(null);
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
-  console.log(activeThread, "active");
 
   const getQuery = () => {
     if (activeThread?.mind === "Email-Writer") {
@@ -27,11 +32,19 @@ const InputField = ({ activeThread, inputValues, followup }) => {
         };
       }
     } else if (activeThread?.mind === "Linkedin-Twitter-Writer") {
-      return {
-        first: "sian",
-        confirm: "confirm_lntw",
-        retry: "retry_lntw",
-      };
+      if (siantoggle === "instagram") {
+        return {
+          first: "sianins3",
+          confirm: "confirm_lntw",
+          retry: "retry_lntw",
+        };
+      } else {
+        return {
+          first: "sianlnk3",
+          confirm: "confirm_lntw",
+          retry: "retry_lntw",
+        };
+      }
     } else if (activeThread?.mind === "Blog-Article-Writer") {
       return {
         first: "amelia",

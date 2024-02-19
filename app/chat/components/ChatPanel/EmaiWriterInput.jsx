@@ -42,6 +42,8 @@ const EmaiWriterInput = ({
   setInputValues,
   setFollowup,
   followup,
+  siantoggle,
+  setSiantoggle,
 }) => {
   // Single state object for all inputs
 
@@ -78,6 +80,12 @@ const EmaiWriterInput = ({
           }
           onChange={(e) => handleInputChange(e, "targetAudience")}
         />
+        <InputMain
+          name="Industry:"
+          typevar="text"
+          value={inputValues?.industry}
+          onChange={(e) => handleInputChange(e, "industry")}
+        />
         {activeThread?.mind === "Email-Writer" && (
           <div className="w-full flex justify-center">
             <label class="inline-flex items-center cursor-pointer">
@@ -94,14 +102,60 @@ const EmaiWriterInput = ({
             </label>
           </div>
         )}
-        {followup && (
+        {/* {activeThread?.mind === "Linkedin-Twitter-Writer" && (
           <InputMain
             name="Industry:"
             typevar="text"
             value={inputValues?.industry}
             onChange={(e) => handleInputChange(e, "industry")}
           />
+        )} */}
+        {activeThread?.mind === "Linkedin-Twitter-Writer" && (
+          <div className="w-full flex justify-center items-center flex-row space-x-3">
+            <div class="flex items-center ">
+              <input
+                checked
+                onClick={() => setSiantoggle("linkedin")}
+                id="default-radio-1"
+                type="radio"
+                value="linkedin"
+                name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <label
+                for="default-radio-1"
+                class="ms-2 text-lg font-medium text-gray-900 dark:text-gray-300"
+              >
+                Linkedin
+              </label>
+            </div>
+            <div class="flex items-center">
+              <input
+                checked
+                onClick={() => setSiantoggle("instagram")}
+                id="default-radio-2"
+                type="radio"
+                value="instagram"
+                name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <label
+                for="default-radio-2"
+                class="ms-2 text-lg font-medium text-gray-900 dark:text-gray-300"
+              >
+                Instagram
+              </label>
+            </div>
+          </div>
         )}
+        {/* {followup && (
+          <InputMain
+            name="Industry:"
+            typevar="text"
+            value={inputValues?.industry}
+            onChange={(e) => handleInputChange(e, "industry")}
+          />
+        )} */}
         {followup && (
           <InputMain2
             name="Earlier Email:"

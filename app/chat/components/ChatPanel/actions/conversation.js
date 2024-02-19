@@ -124,6 +124,38 @@ const createNewQuestion = createAsyncThunk(
         conversation_id: finalConversationId,
       });
     }
+    if (payload?.api === "sianins3") {
+      questionResponse = await postRequest("/sianins3/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        // query: "query1",
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+
+        // offer: payload?.inputValues?.specialOffer,
+        // email_seq: payload?.inputValues?.emailSeqNumber,
+      });
+    }
+    if (payload?.api === "sianlnk3") {
+      questionResponse = await postRequest("/sianins3/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        // query: "query1",
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+
+        // offer: payload?.inputValues?.specialOffer,
+        // email_seq: payload?.inputValues?.emailSeqNumber,
+      });
+    }
     if (payload?.api === "sian") {
       console.log("sian ");
       questionResponse = await postRequest("/sian/", {
