@@ -219,6 +219,12 @@ const EmaiWriterInput = ({
             >
               MNP
             </DropdownMenuItem>
+            <DropdownMenuItem
+              className="cursor-pointer hover:text-purple-400"
+              onClick={() => handleInputChange("luxofy", "project")}
+            >
+              Luxofy
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
         {inputValues?.project !== "" && (
@@ -242,6 +248,23 @@ const EmaiWriterInput = ({
                   onClick={() => handleInputChange("aftc", "product")}
                 >
                   aftc
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            )}
+            {inputValues?.project === "luxofy" && (
+              <DropdownMenuContent className="w-[10rem]">
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  className="cursor-pointer hover:text-purple-400"
+                  onClick={() => handleInputChange("pinecliff", "product")}
+                >
+                  Pinecliff
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="cursor-pointer hover:text-purple-400"
+                  onClick={() => handleInputChange("floretta", "product")}
+                >
+                  Floretta
                 </DropdownMenuItem>
               </DropdownMenuContent>
             )}
