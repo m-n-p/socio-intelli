@@ -17,15 +17,15 @@ const QuestionsList = () => {
   function determineColor(mind) {
     if (!mind) return "#0A7008";
     let checkMindColor = mind.toLowerCase();
-    console.log(checkMindColor);
+    console.log(checkMindColor, "minf");
     switch (checkMindColor) {
       case "etx":
         return "#E90E0E";
       case "agmv":
         return "#DCB21B";
-      case "researcher":
+      case "unwinded":
         return "#1B68DC";
-      case "":
+      case "mnp":
         return "#0A7008";
     }
   }
