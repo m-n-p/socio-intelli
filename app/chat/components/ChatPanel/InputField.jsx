@@ -38,7 +38,13 @@ const InputField = ({
           confirm: "confirm_lntw",
           retry: "retry_lntw",
         };
-      } else {
+      } else if (siantoggle === "lit") {
+        return {
+          first: "sianv1",
+          confirm: "confirm_lntw",
+          retry: "retry_lntw",
+        };
+      } else if (siantoggle === "linkedin") {
         return {
           first: "sianlnk3",
           confirm: "confirm_lntw",
@@ -53,7 +59,7 @@ const InputField = ({
       };
     }
   };
-  console.log(getQuery(), "getQuery");
+  console.log(getQuery(), "getQuery", siantoggle);
 
   async function askQuestion(e) {
     setLoading(true);

@@ -56,7 +56,6 @@ const EmaiWriterInput = ({
     }
   };
 
-  console.log(inputValues, "activeThread", activeThread, followup);
   return (
     <div className="flex flex-col space-y-3">
       <div className="flex flex-col  justify-center w-2/3 mx-auto">
@@ -144,6 +143,23 @@ const EmaiWriterInput = ({
                 class="ms-2 text-lg font-medium text-gray-900 dark:text-gray-300"
               >
                 Instagram
+              </label>
+            </div>
+            <div class="flex items-center">
+              <input
+                checked
+                onClick={() => setSiantoggle("lit")}
+                id="default-radio-2"
+                type="radio"
+                value="instagram"
+                name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <label
+                for="default-radio-2"
+                class="ms-2 text-lg font-medium text-gray-900 dark:text-gray-300"
+              >
+                Social Posts (LinkedIn, Instagram, Twitter)
               </label>
             </div>
           </div>

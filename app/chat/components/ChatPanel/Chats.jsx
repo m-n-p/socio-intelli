@@ -3,6 +3,7 @@ import ResponseCard from "./ResponseCard";
 import OptionInput from "./OptionInput";
 import Loading from "./Loading";
 import EmaiWriterInput from "./EmaiWriterInput";
+import Loader from "../Loader";
 
 const Chats = ({
   conversations,
@@ -23,7 +24,7 @@ const Chats = ({
       container.scrollTop = container.scrollHeight;
     }
   }, [conversations]);
-  console.log(activeThread, "activeThread");
+
   return (
     <div
       ref={scrollableContainerRef}
@@ -53,6 +54,7 @@ const Chats = ({
             {!convo?.loading ? (
               convo?.answer && (
                 <ResponseCard
+                  siantoggle={siantoggle}
                   followup={followup}
                   initial={" MU"}
                   isGenesis={true}
@@ -62,7 +64,9 @@ const Chats = ({
                 />
               )
             ) : (
-              <Loading />
+              <div className="flex justify-center w-full mx-auto px-32">
+                <Loader size={100} />
+              </div>
             )}
           </>
         );

@@ -11,6 +11,7 @@ const ResponseCard = ({
   inputValues,
   activeThread,
   followup,
+  siantoggle,
 }) => {
   console.log(mind, "mind");
   const [loading, setLoading] = useState(false);
@@ -32,11 +33,25 @@ const ResponseCard = ({
         };
       }
     } else if (mind === "Linkedin-Twitter-Writer") {
-      return {
-        first: "sian",
-        confirm: "confirm_lntw",
-        retry: "retry_lntw",
-      };
+      if (siantoggle === "instagram") {
+        return {
+          first: "sian",
+          confirm: "confirm_sianins3",
+          retry: "retry_lntw",
+        };
+      } else if (siantoggle === "lit") {
+        return {
+          first: "sian",
+          confirm: "confirm_sianv1",
+          retry: "retry_lntw",
+        };
+      } else {
+        return {
+          first: "sian",
+          confirm: "confirm_sianlnk3",
+          retry: "retry_lntw",
+        };
+      }
     } else if (mind === "Blog-Article-Writer") {
       return {
         first: "amelia",
@@ -62,55 +77,25 @@ const ResponseCard = ({
     setLoading(true);
     try {
       // dispatch(addQuestionToList({ query: inputValues?.theme }));
+
       if (getQuery()?.first === "sian") {
         await dispatch(
           createNewQuestion({
             // query: inputValues?.theme,
-            mind: getQuery()?.first,
-            api: getQuery()?.confirm,
-            inputValues: inputValues,
-          })
-        );
-      } else {
-        console.log(getQuery(), "getquery",mind);
-        await dispatch(
-          createNewQuestion({
             mind: getQuery()?.first,
             api: getQuery()?.confirm,
             inputValues: inputValues,
             output: text?.result,
           })
         );
-      }
-
-      setLoading(false);
-    } catch (error) {
-      console.log(error, "error");
-      setLoading(false);
-    }
-  }
-  async function reject(typemain) {
-    setLoading(true);
-    try {
-      // dispatch(addQuestionToList({ query: inputValues?.theme }));
-
-      if (getQuery()?.first === "sian") {
-        await dispatch(
-          createNewQuestion({
-            // query: inputValues?.theme,
-            mind: getQuery()?.first,
-            api:
-              typemain === "lntw" ? getQuery()?.retry : getQuery()?.retry_fbin,
-            // inputValues: inputValues,
-          })
-        );
       } else {
+        console.log(getQuery(), "getquery", mind);
         await dispatch(
           createNewQuestion({
-            // query: inputValues?.theme,
             mind: getQuery()?.first,
-            api: getQuery()?.retry,
-            // inputValues: inputValues,
+            api: getQuery()?.confirm,
+            inputValues: inputValues,
+            output: text?.result,
           })
         );
       }
@@ -197,35 +182,6 @@ const ResponseCard = ({
                   <Loader size={100} />
                 ))}
             </div>
-            {/* <div className="w-1/2">
-              <p
-                className="max-w-full text-wrap	 flex items-center"
-                dangerouslySetInnerHTML={{
-                  __html: editedText2,
-                }}
-              ></p>
-              {isGenesis &&
-                (!loading ? (
-                  <div className="flex items-center py-6 flex-row space-x-6">
-                    <button
-                      onClick={approve}
-                      className="bg-green-500 rounded-full hover:text-purple-500 hover:shadow-lg  px-3 py-3 text-2xl font-medium text-white"
-                    >
-                      Approve
-                    </button>
-                    <button
-                      onClick={reject}
-                      className="bg-red-600 rounded-full hover:text-purple-500 hover:shadow-lg px-3 py-3 text-2xl font-medium text-white"
-                    >
-                      Try Again
-                    </button>
-                  </div>
-                ) : (
-                  <Loader size={100} />
-                ))}
-            </div> */}
-
-            {/* <p className="max-w-full text-wrap	 flex items-center ">{text}</p> */}
           </div>
         )}
       </div>

@@ -124,6 +124,60 @@ const createNewQuestion = createAsyncThunk(
         conversation_id: finalConversationId,
       });
     }
+    //
+    if (payload?.api === "confirm_sianins3") {
+      questionResponse = await postRequest("/confirm_sianins3/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        // query: "query1",
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+        output: payload?.output,
+
+        // offer: payload?.inputValues?.specialOffer,
+        // email_seq: payload?.inputValues?.emailSeqNumber,
+      });
+    }
+    if (payload?.api === "confirm_sianv1") {
+      questionResponse = await postRequest("/confirm_sianv1/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        // query: "query1",
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+        output: payload?.output,
+
+        // offer: payload?.inputValues?.specialOffer,
+        // email_seq: payload?.inputValues?.emailSeqNumber,
+      });
+    }
+    if (payload?.api === "confirm_sianlnk3") {
+      questionResponse = await postRequest("/confirm_sianlnk3/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        // query: "query1",
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+        output: payload?.output,
+
+        // offer: payload?.inputValues?.specialOffer,
+        // email_seq: payload?.inputValues?.emailSeqNumber,
+      });
+    }
+
+    //
     if (payload?.api === "sianins3") {
       questionResponse = await postRequest("/sianins3/", {
         user_id: uuid,
@@ -140,8 +194,24 @@ const createNewQuestion = createAsyncThunk(
         // email_seq: payload?.inputValues?.emailSeqNumber,
       });
     }
+    if (payload?.api === "sianv1") {
+      questionResponse = await postRequest("/sianv1/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        // query: "query1",
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+
+        // offer: payload?.inputValues?.specialOffer,
+        // email_seq: payload?.inputValues?.emailSeqNumber,
+      });
+    }
     if (payload?.api === "sianlnk3") {
-      questionResponse = await postRequest("/sianins3/", {
+      questionResponse = await postRequest("/sianlnk3/", {
         user_id: uuid,
         conversation_id: finalConversationId,
         // query: "query1",
@@ -199,7 +269,7 @@ const createNewQuestion = createAsyncThunk(
         message: questionResponse.error,
       });
     }
-    console.log(questionResponse, "questionResponse");
+
     if (questionResponse?.message) {
       toast.success(questionResponse?.message);
     } else {
