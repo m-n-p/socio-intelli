@@ -282,6 +282,12 @@ const EmaiWriterInput = ({
                 >
                   Floretta
                 </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="cursor-pointer hover:text-purple-400"
+                  onClick={() => handleInputChange("azalea", "product")}
+                >
+                  Azalea
+                </DropdownMenuItem>
               </DropdownMenuContent>
             )}
             {inputValues?.project === "mnp" && (
