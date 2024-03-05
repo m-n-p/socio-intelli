@@ -6,6 +6,11 @@ import EmaiWriterInput from "./EmaiWriterInput";
 import Loader from "../Loader";
 
 const Chats = ({
+  handleDeleteKeyword,
+  currentKeyword,
+  handleKeywordChange,
+  handleKeyPress,
+  addKeyword,
   conversations,
   activeThread,
   inputValues,
@@ -14,6 +19,8 @@ const Chats = ({
   setFollowup,
   siantoggle,
   setSiantoggle,
+  adsOrArticle,
+  setAdsOrArticle,
 }) => {
   const scrollableContainerRef = useRef(null);
 
@@ -54,6 +61,7 @@ const Chats = ({
             {!convo?.loading ? (
               convo?.answer && (
                 <ResponseCard
+                  adsOrArticle={adsOrArticle}
                   siantoggle={siantoggle}
                   followup={followup}
                   initial={" MU"}
@@ -72,6 +80,11 @@ const Chats = ({
         );
       })}
       <EmaiWriterInput
+        handleDeleteKeyword={handleDeleteKeyword}
+        currentKeyword={currentKeyword}
+        handleKeywordChange={handleKeywordChange}
+        handleKeyPress={handleKeyPress}
+        addKeyword={addKeyword}
         siantoggle={siantoggle}
         setSiantoggle={setSiantoggle}
         setFollowup={setFollowup}
@@ -79,6 +92,8 @@ const Chats = ({
         activeThread={activeThread}
         inputValues={inputValues}
         setInputValues={setInputValues}
+        adsOrArticle={adsOrArticle}
+        setAdsOrArticle={setAdsOrArticle}
       />
     </div>
   );

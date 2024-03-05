@@ -55,7 +55,7 @@ const ChooseRole = ({ activeThread }) => {
         <Role
           handleClick={handleClick}
           image={"/engines/blog.png"}
-          heading={"Blog-Article-Writer"}
+          heading={"Article + Google Ads"}
           value="Blog-Article-Writer"
         />
       </div>

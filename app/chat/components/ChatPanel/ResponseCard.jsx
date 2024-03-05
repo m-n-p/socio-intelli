@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import Loader from "../Loader";
 
 const ResponseCard = ({
+  adsOrArticle,
   initial,
   isGenesis,
   text,
@@ -45,6 +46,12 @@ const ResponseCard = ({
           confirm: "confirm_sianv1",
           retry: "retry_lntw",
         };
+      } else if (siantoggle === "watsapp") {
+        return {
+          first: "sianwhapp",
+          confirm: "confirm_sianwhapp",
+          retry: "retry_lntw",
+        };
       } else {
         return {
           first: "sian",
@@ -53,11 +60,19 @@ const ResponseCard = ({
         };
       }
     } else if (mind === "Blog-Article-Writer") {
-      return {
-        first: "amelia",
-        confirm: "confirm_amelia",
-        retry: "retry_amelia",
-      };
+      if (adsOrArticle === true) {
+        return {
+          first: "steve",
+          confirm: "confirm_steve",
+          retry: "retry_amelia",
+        };
+      } else {
+        return {
+          first: "gads",
+          confirm: "confirm_gads",
+          retry: "retry_amelia",
+        };
+      }
     }
   };
   console.log(text?.result, "text?.result");

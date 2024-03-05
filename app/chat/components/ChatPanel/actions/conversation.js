@@ -101,21 +101,55 @@ const createNewQuestion = createAsyncThunk(
       });
     }
 
-    if (payload?.api === "amelia") {
-      questionResponse = await postRequest("/amelia/", {
+    if (payload?.api === "gads") {
+      questionResponse = await postRequest("/gads/", {
         user_id: uuid,
         conversation_id: finalConversationId,
-        // query: "query1",
-        project: "aftc",
-        theme: payload?.inputValues?.theme,
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
         target_audience: payload?.inputValues?.targetAudience,
         product: payload?.inputValues?.product,
+
+        industry: payload?.inputValues?.industry,
       });
     }
-    if (payload?.api === "confirm_amelia") {
-      questionResponse = await postRequest("/confirm_amelia/", {
+    if (payload?.api === "confirm_gads") {
+      questionResponse = await postRequest("/confirm_gads/", {
         user_id: uuid,
         conversation_id: finalConversationId,
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+
+        output: payload?.output,
+      });
+    }
+    if (payload?.api === "steve") {
+      questionResponse = await postRequest("/steve/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        keywords: payload?.inputValues?.keywords?.join(", "),
+        industry: payload?.inputValues?.industry,
+      });
+    }
+    if (payload?.api === "confirm_steve") {
+      questionResponse = await postRequest("/confirm_steve/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        keywords: payload?.inputValues?.keywords?.join(", "),
+
+        output: payload?.output,
       });
     }
     if (payload?.api === "retry_amelia") {
@@ -176,10 +210,43 @@ const createNewQuestion = createAsyncThunk(
         // email_seq: payload?.inputValues?.emailSeqNumber,
       });
     }
+    if (payload?.api === "confirm_sianwhapp") {
+      questionResponse = await postRequest("/confirm_sianwhapp/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        // query: "query1",
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+        output: payload?.output,
+
+        // offer: payload?.inputValues?.specialOffer,
+        // email_seq: payload?.inputValues?.emailSeqNumber,
+      });
+    }
 
     //
     if (payload?.api === "sianins3") {
       questionResponse = await postRequest("/sianins3/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        // query: "query1",
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        industry: payload?.inputValues?.industry,
+        earlier_email: payload?.inputValues?.earlier_email,
+
+        // offer: payload?.inputValues?.specialOffer,
+        // email_seq: payload?.inputValues?.emailSeqNumber,
+      });
+    }
+    if (payload?.api === "sianwhapp") {
+      questionResponse = await postRequest("/sianwhapp/", {
         user_id: uuid,
         conversation_id: finalConversationId,
         // query: "query1",

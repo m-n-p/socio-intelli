@@ -7,6 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Keywords from "./Keywords";
 
 const InputMain = ({ name, typevar, value, onChange }) => {
   return (
@@ -37,6 +38,11 @@ const InputMain2 = ({ name, typevar, value, onChange }) => {
 };
 
 const EmaiWriterInput = ({
+  handleDeleteKeyword,
+  currentKeyword,
+  handleKeywordChange,
+  handleKeyPress,
+  addKeyword,
   activeThread,
   inputValues,
   setInputValues,
@@ -44,6 +50,8 @@ const EmaiWriterInput = ({
   followup,
   siantoggle,
   setSiantoggle,
+  adsOrArticle,
+  setAdsOrArticle,
 }) => {
   // Single state object for all inputs
 
@@ -101,6 +109,35 @@ const EmaiWriterInput = ({
             </label>
           </div>
         )}
+        {/*  */}
+
+        {activeThread?.mind === "Blog-Article-Writer" && (
+          <div className="w-full flex justify-center">
+            <label class="inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                value=""
+                class="sr-only peer"
+                onChange={() => setAdsOrArticle(!adsOrArticle)}
+              />
+              <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+              <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Artice
+              </span>
+            </label>
+          </div>
+        )}
+
+        {adsOrArticle && (
+          <Keywords
+            handleDeleteKeyword={handleDeleteKeyword}
+            currentKeyword={currentKeyword}
+            handleKeywordChange={handleKeywordChange}
+            handleKeyPress={handleKeyPress}
+            addKeyword={addKeyword}
+            inputValues={inputValues}
+          />
+        )}
         {/* {activeThread?.mind === "Linkedin-Twitter-Writer" && (
           <InputMain
             name="Industry:"
@@ -110,7 +147,7 @@ const EmaiWriterInput = ({
           />
         )} */}
         {activeThread?.mind === "Linkedin-Twitter-Writer" && (
-          <div className="w-full flex justify-center items-center flex-row space-x-3">
+          <div className="w-full grid grid-cols-2 gap-10">
             <div class="flex items-center ">
               <input
                 checked
@@ -160,6 +197,23 @@ const EmaiWriterInput = ({
                 class="ms-2 text-lg font-medium text-gray-900 dark:text-gray-300"
               >
                 Social Posts (LinkedIn, Instagram, Twitter)
+              </label>
+            </div>
+            <div class="flex items-center">
+              <input
+                checked
+                onClick={() => setSiantoggle("watsapp")}
+                id="default-radio-2"
+                type="radio"
+                value="watsapp"
+                name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <label
+                for="default-radio-2"
+                class="ms-2 text-lg font-medium text-gray-900 dark:text-gray-300"
+              >
+                Watsapp Post
               </label>
             </div>
           </div>

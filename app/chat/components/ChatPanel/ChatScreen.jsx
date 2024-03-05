@@ -13,11 +13,42 @@ const ChatScreen = ({ activeThread }) => {
     product: "",
     earlier_email: "",
     industry: "",
+    keywords: [],
   });
+  const [currentKeyword, setCurrentKeyword] = useState("");
   const [followup, setFollowup] = useState(false);
-  const [siantoggle, setSiantoggle] = useState("instagram");
+  const [siantoggle, setSiantoggle] = useState("watsapp");
+  const [adsOrArticle, setAdsOrArticle] = useState(false);
 
-  console.log(siantoggle, "siantoggle");
+  console.log(inputValues, "inputValues");
+
+  const handleKeywordChange = (event) => {
+    setCurrentKeyword(event.target.value);
+  };
+
+  const addKeyword = (e) => {
+    e.preventDefault();
+    if (currentKeyword.trim() !== "") {
+      setInputValues((prev) => ({
+        ...prev,
+        keywords: [...prev.keywords, currentKeyword.trim()],
+      }));
+      setCurrentKeyword("");
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      addKeyword(event);
+    }
+  };
+  const handleDeleteKeyword = (index) => {
+    setInputValues((prev) => ({
+      ...prev,
+      keywords: prev.keywords.filter((_, i) => i !== index),
+    }));
+  };
+
   function getTimeGreeting() {
     const currentHour = new Date().getHours();
 
@@ -42,6 +73,11 @@ const ChatScreen = ({ activeThread }) => {
       </div>
       <div className="grow flex flex-col overflow-y-hidden max-h-full h-full">
         <Chats
+          handleDeleteKeyword={handleDeleteKeyword}
+          currentKeyword={currentKeyword}
+          handleKeywordChange={handleKeywordChange}
+          handleKeyPress={handleKeyPress}
+          addKeyword={addKeyword}
           siantoggle={siantoggle}
           setSiantoggle={setSiantoggle}
           setFollowup={setFollowup}
@@ -50,9 +86,13 @@ const ChatScreen = ({ activeThread }) => {
           setInputValues={setInputValues}
           conversations={activeThread?.chats}
           activeThread={activeThread}
+          adsOrArticle={adsOrArticle}
+          setAdsOrArticle={setAdsOrArticle}
         />
       </div>
       <InputField
+        adsOrArticle={adsOrArticle}
+        setAdsOrArticle={setAdsOrArticle}
         setSiantoggle={setSiantoggle}
         siantoggle={siantoggle}
         followup={followup}

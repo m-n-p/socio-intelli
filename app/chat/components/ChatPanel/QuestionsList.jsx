@@ -12,8 +12,6 @@ const QuestionsList = () => {
     dispatch(getGetCurrentThread({ conversationId }));
   }
 
-  console.log(threads, "new threasd");
-
   function determineColor(mind) {
     if (!mind) return "#0A7008";
     let checkMindColor = mind.toLowerCase();
@@ -29,7 +27,7 @@ const QuestionsList = () => {
         return "#0A7008";
     }
   }
-  console.log(threads, "  threads");
+
   return (
     <div className="flex flex-col space-y-2 grow h-full noscrollbarstyle overflow-y-scroll py-5">
       {threads?.length > 0 &&
