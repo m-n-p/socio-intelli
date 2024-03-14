@@ -14,6 +14,8 @@ const ChatScreen = ({ activeThread }) => {
     earlier_email: "",
     industry: "",
     keywords: [],
+    noOfTwts: "",
+    persona : ""
   });
   const [currentKeyword, setCurrentKeyword] = useState("");
   const [followup, setFollowup] = useState(false);

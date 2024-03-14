@@ -15,7 +15,7 @@ const QuestionsList = () => {
   function determineColor(mind) {
     if (!mind) return "#0A7008";
     let checkMindColor = mind.toLowerCase();
-    console.log(checkMindColor, "minf");
+
     switch (checkMindColor) {
       case "etx":
         return "#E90E0E";
@@ -32,7 +32,6 @@ const QuestionsList = () => {
     <div className="flex flex-col space-y-2 grow h-full noscrollbarstyle overflow-y-scroll py-5">
       {threads?.length > 0 &&
         threads?.map((convo, index) => {
-          console.log(convo, "convo");
           return (
             convo?.thread?.length > 0 && (
               <div

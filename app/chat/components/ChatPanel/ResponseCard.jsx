@@ -73,6 +73,12 @@ const ResponseCard = ({
           retry: "retry_amelia",
         };
       }
+    } else if (mind === "twitter") {
+      return {
+        first: "siantwt",
+        confirm: "confirm_siantwt",
+        retry: "retry_amelia",
+      };
     }
   };
   console.log(text?.result, "text?.result");

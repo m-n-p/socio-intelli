@@ -126,6 +126,37 @@ const createNewQuestion = createAsyncThunk(
         output: payload?.output,
       });
     }
+
+    if (payload?.api === "siantwt") {
+      questionResponse = await postRequest("/siantwt/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        persona: payload?.inputValues?.persona,
+        tweets: payload?.inputValues?.noOfTwts,
+
+        industry: payload?.inputValues?.industry,
+      });
+    }
+    if (payload?.api === "confirm_siantwt") {
+      questionResponse = await postRequest("/confirm_siantwt/", {
+        user_id: uuid,
+        conversation_id: finalConversationId,
+        project: payload?.inputValues?.project,
+        objective: payload?.inputValues?.theme,
+        target_audience: payload?.inputValues?.targetAudience,
+        product: payload?.inputValues?.product,
+        persona: payload?.inputValues?.persona,
+        tweets: payload?.inputValues?.noOfTwts,
+
+        industry: payload?.inputValues?.industry,
+        output: payload?.output,
+      });
+    }
+
     if (payload?.api === "steve") {
       questionResponse = await postRequest("/steve/", {
         user_id: uuid,

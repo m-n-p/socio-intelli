@@ -27,7 +27,7 @@ const InputMain2 = ({ name, typevar, value, onChange }) => {
     <div className="py-6 flex flex-col space-y-4">
       <div className="text-2xl font-medium">{name}</div>
       <textarea
-        rows={6}
+        rows={4}
         type={typevar}
         value={value}
         onChange={onChange}
@@ -57,7 +57,11 @@ const EmaiWriterInput = ({
 
   // Function to handle input changes
   const handleInputChange = (e, fieldName) => {
-    if (fieldName === "project" || fieldName === "product") {
+    if (
+      fieldName === "project" ||
+      fieldName === "product" ||
+      fieldName === "persona"
+    ) {
       setInputValues({ ...inputValues, [fieldName]: e });
     } else {
       setInputValues({ ...inputValues, [fieldName]: e.target.value });
@@ -67,7 +71,7 @@ const EmaiWriterInput = ({
   return (
     <div className="flex flex-col space-y-3">
       <div className="flex flex-col  justify-center w-2/3 mx-auto">
-        <InputMain
+        <InputMain2
           name="Objective"
           typevar="text"
           value={
@@ -93,6 +97,15 @@ const EmaiWriterInput = ({
           value={inputValues?.industry}
           onChange={(e) => handleInputChange(e, "industry")}
         />
+        {activeThread?.mind === "twitter" && (
+          <InputMain
+            name="Number of Tweets:"
+            typevar="number"
+            value={inputValues?.noOfTwts}
+            onChange={(e) => handleInputChange(e, "noOfTwts")}
+          />
+        )}
+
         {activeThread?.mind === "Email-Writer" && (
           <div className="w-full flex justify-center">
             <label class="inline-flex items-center cursor-pointer">
@@ -261,6 +274,56 @@ const EmaiWriterInput = ({
         )}
       </div> */}
       <div className="w-[30%] mx-auto flex justify-center flex-col space-y-6 ">
+        {activeThread?.mind === "twitter" && (
+          <DropdownMenu className="border-none ">
+            <DropdownMenuTrigger className="border-black border-2 px-4 py-3 rounded-full text-xl font-medium  hover:bg-purple-400 hover:text-white hover:border-white">
+              {inputValues?.persona === ""
+                ? " Click Here To Select Persona"
+                : inputValues?.persona}
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent className="w-[10rem]">
+              {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                className="cursor-pointer hover:text-purple-400"
+                onClick={() => handleInputChange("Bhanu", "persona")}
+              >
+                Bhanu
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="cursor-pointer hover:text-purple-400"
+                onClick={() => handleInputChange("Shaan", "persona")}
+              >
+                Shaan
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="cursor-pointer hover:text-purple-400"
+                onClick={() => handleInputChange("Arvid", "persona")}
+              >
+                Arvid
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="cursor-pointer hover:text-purple-400"
+                onClick={() => handleInputChange("Bob", "persona")}
+              >
+                Bob
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="cursor-pointer hover:text-purple-400"
+                onClick={() => handleInputChange("Damon", "persona")}
+              >
+                Damon
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="cursor-pointer hover:text-purple-400"
+                onClick={() => handleInputChange("David", "persona")}
+              >
+                David
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
         <DropdownMenu className="border-none ">
           <DropdownMenuTrigger className="border-black border-2 px-4 py-3 rounded-full text-xl font-medium  hover:bg-purple-400 hover:text-white hover:border-white">
             {inputValues?.project === ""

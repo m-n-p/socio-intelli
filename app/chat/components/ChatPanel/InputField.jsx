@@ -72,6 +72,12 @@ const InputField = ({
           retry: "retry_amelia",
         };
       }
+    } else if (activeThread?.mind === "twitter") {
+      return {
+        first: "siantwt",
+        confirm: "confirm_siantwt",
+        retry: "retry_amelia",
+      };
     }
   };
   console.log(getQuery(), "getQuery", siantoggle);

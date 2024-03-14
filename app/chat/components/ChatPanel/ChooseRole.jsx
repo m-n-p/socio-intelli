@@ -39,7 +39,7 @@ const ChooseRole = ({ activeThread }) => {
           What Role are we playing now?
         </p>
       </div>
-      <div className="flex justify-between px-12  space-x-36">
+      <div className="grid grid-cols-3 gap-10">
         <Role
           handleClick={handleClick}
           image={"/engines/email.png"}
@@ -49,7 +49,7 @@ const ChooseRole = ({ activeThread }) => {
         <Role
           handleClick={handleClick}
           image={"/engines/linkedin.png"}
-          heading={"Linkedin-Twitter-Writer"}
+          heading={"Linkedin-Instagram-Writer"}
           value={"Linkedin-Twitter-Writer"}
         />
         <Role
@@ -57,6 +57,12 @@ const ChooseRole = ({ activeThread }) => {
           image={"/engines/blog.png"}
           heading={"Article + Google Ads"}
           value="Blog-Article-Writer"
+        />
+        <Role
+          handleClick={handleClick}
+          image={"/engines/twitter.png"}
+          heading={"X-Man"}
+          value="twitter"
         />
       </div>
     </div>
